@@ -1,0 +1,94 @@
+<style>
+    .background{
+
+    background-color: aliceblue;
+    min-width: 900px;
+    min-height: 1200px;
+    }
+    
+
+</style>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Reg</title>
+</head>
+<body>
+    <div class="body">
+<div class="background">
+    <br>
+    <h3>Welcome! Sign in to manage your jobs</h3>                
+        {% for err in messages %}        <!-- displaying the validations-->
+            <p style='color:red;'> {{err}} </p>
+        {% endfor %}
+    <br>
+    <div>
+        <h5>Register</h5> <!-- register header -->
+    </div>
+
+    <form action='/create' method='POST'>
+
+        <!--/create will go to urls with the views of creating action -->
+        {% csrf_token %}
+    <div class="form-group"> 
+        <label> First Name </label>
+        <input type='text' name='first_name'>
+    </div> 
+   
+    <div class="form-group"> 
+        <label>Last Name</label>
+        <input type='text' name='last_name'>
+    </div> 
+    <div class="form-group"> 
+        <label>Email</label>
+        <input type='text' name='email'>
+    </div>
+
+    <div class="form-group"> 
+        <label> Password </label>
+        <input type='password' name='password'>
+    </div>
+
+    <div class="form-group"> 
+        <label>Confirm PW</label>
+        <input type='password' name='pw_confirm'>
+    </div>
+
+        <button class="btn btn-secondary">Register</button>
+
+    </form>
+
+
+    <!-- Above is the register form-->
+
+
+    <!-- below is the login form-->
+    <br>
+    <div>
+        <h5>Login</h5>
+    </div>
+    <form action='/login' method='POST'>
+        <!-- /login will go with the only view.login function-->
+        {% csrf_token %}
+    <div class="form-group">        
+        <label>Email</label>
+        <input type='text' name='email'>
+    </div>
+ 
+    <div class="form-group">   
+        <label> Password </label>
+        <input type='password' name='password'>
+    </div>
+    
+        <button class="btn btn-secondary">Login</button>
+    </form>
+
+</body>
+
+</div>
+</div>
+</html>

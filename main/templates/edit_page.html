@@ -1,0 +1,78 @@
+<style>
+    .background{
+
+        background-color: aliceblue;
+        min-width: 900px;
+        min-height: 1200px;
+    }
+    .body{
+        margin-left: 40px;
+        margin-top: 20px;
+    }
+
+    .buttons{
+        margin-left: 15px;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Job</title>
+</head>
+<body>
+<div class="background">
+<div class="body">
+
+    <div><a href="/">Logout</a></div>  <!-- top right button on page-->
+
+ 
+
+    <h2 class="display-8">Hello {{user.first_name}} ! Let's edit your job!</h2>
+
+
+
+    {% for err in messages %}
+            <p style='color:red;'> {{err}} </p>
+        {% endfor %}
+
+  
+    
+    <!-- form action is not a website just the process// half a second-->
+    <form action="/jobs/edit/{{job.id}}/update" method="POST"> <!-- create a form bc its asking for info from the user to submit-->
+        {% csrf_token %}
+        
+        <div class="col-sm-6">
+           <label>Title</label>                <!-- headers for each entry of the form-->
+           <input class="form-control" type="text" name="title" value="{{job.title}}">
+        </div>
+         
+        <div class="col-sm-6">
+           <label>Description</label>
+           <input class="form-control" type="text" name="description" value="{{job.description}}"> <!--add value to shoe pre sets -->
+        </div>
+ 
+        <div class="col-sm-6">
+           <label>Location</label>
+           <input class="form-control" type="text" name="location" value="{{job.location}}">
+        </div>
+ 
+        <br>
+        <div class="buttons">
+        <button class="btn btn-secondary">Submit</button>     <!-- submit button will go to /jobs/edit/{{job.id}}/update-->
+        <button class="btn btn-dark" type="button"><a href="/dashboard">cancel</a></button>
+        </div>
+ 
+ 
+     
+    </form>
+ 
+</div>
+
+</div>
+ </body>
+ </html>
+   

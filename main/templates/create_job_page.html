@@ -1,0 +1,73 @@
+<style>
+        .background{
+
+    background-color: aliceblue;
+    min-width: 900px;
+    min-height: 1200px;
+    }
+    .body{
+        margin-left: 40px;
+    
+    }
+
+
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Job</title>
+</head>
+<body>
+<div class="background">
+<div class="body">
+    <br>
+
+    <div><a href="/">Logout</a></div>  <!-- top right button on page-->
+
+    {% for err in messages %}
+            <p style="color: red;">{{ err }}</p>
+        {% endfor%}
+
+    <h3 class="display-9">Hello {{user.first_name}}, Create a job!</h3>
+
+    <form action="/job/create" method="POST"> <!-- create a form bc its asking for info from the user to submit-->
+        {% csrf_token %}
+      
+        <h4>Add a job</h4>
+    <div class="col-sm-4">
+        <label>Title</label>                <!-- headers for each entry of the form-->
+        <input class="form-control" type="text" name="title">
+    </div>
+
+
+    <div class="col-sm-4">
+        <label>Location</label>
+        <input class="form-control" type="text"  name="location">
+    </div>
+
+    <div class="col-sm-4">
+        <label>Description</label>
+        <input class="form-control" type="text" name="description">
+    </div>
+    <br>
+       
+        <button class="btn btn-secondary">submit</button>
+        <button type="button" class="btn btn-dark"><a href="/dashboard">cancel</a></button> <!-- when i click cancelt it will take me to /dashboard -->
+
+
+
+    
+    </form>
+</div>
+</div>
+</body>
+</html>
+       
+
+
+        

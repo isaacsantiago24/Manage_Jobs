@@ -1,0 +1,52 @@
+<style>
+    .background{
+
+    background-color: aliceblue;
+    min-width: 900px;
+    min-height: 1200px;
+    }
+    .body{
+        margin-left: 40px;
+       
+    }
+
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Job</title>
+</head>
+
+<div class="background">
+<body>
+<div class="body">
+    <br>
+    <h2 class="display-8">Hello {{user.first_name}} ! These are the job details!</h2>
+   
+    
+    <div><a href="/dashboard">Dashboard</a></div>
+    <div><a href="/">Log out</a></div>
+
+   <br>
+    <h4>Job: {{job.title}}</h4>
+
+    <p><b>Description:</b>{{job.description}}</p>
+
+    <p><b>Location:</b> {{job.location}}</p>
+
+    
+    <p><b>Posted by:</b> {{job.user.first_name}}</p> <!-- from models gets the name of the user who created it calling USER-->
+   
+
+    <p><b>Posted on:</b> {{job.created_at}}</p>
+    
+
+</div>
+   
+</div>
+</body>
+</html>
